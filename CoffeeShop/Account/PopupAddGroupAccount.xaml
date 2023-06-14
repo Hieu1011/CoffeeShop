@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="CoffeeShop.Account.PopupAddGroupAccount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CoffeeShop.View"
+              mc:Ignorable="d" 
+             Height="Auto" Width="460">
+    <StackPanel Background="White">
+        <!--Title bar here-->
+        <Grid x:Name="topBar" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <UserControls:TitleBar/>
+            <TextBlock Text="Thêm nhóm tài khoản" 
+                       FontFamily="Montserrat"
+                       FontSize="20" 
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Foreground="#FFE297"/>
+        </Grid>
+        <!--Group account name-->
+        <TextBlock Margin="20,20,20,0" Text="Tên nhóm tài khoản"/>
+        <TextBox  x:Name="tbName" Margin="20,5,20,0" BorderThickness="1" Padding="5" PreviewTextInput="tbName_PreviewTextInput"
+                 Height="40" FontSize="15" VerticalContentAlignment="Center"/>
+        <TextBlock Margin="20,0,20,0" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                   Name="tbGroupAccountValidation" FontSize="13" Foreground="Red" Text=""/>
+        <!--Permission-->
+        <Grid Margin="20,0,20,0" DataContext="{Binding }" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="181*"/>
+                <RowDefinition Height="23*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                <!--Move permission button-->
+                <Button   
+                    x:Name="btnSelectedToRight"    
+                    Command="{Binding }" 
+                        Margin="0,10,0,0"
+                        CommandParameter="{Binding}" 
+                        HorizontalContentAlignment="Center" FontSize="15"
+                        VerticalContentAlignment="Center" Content=">" Foreground="#6B6158"
+                        Height="42"  Width="52" Background="#FFE297" BorderBrush="#6B6158"
+                    Click="btnSelectedToRight_Click">
+                </Button>
+                <Button   
+                        x:Name="btnAllToRight"
+                        Command="{Binding AddDevice}" 
+                        Margin="0,10,0,0"
+                        CommandParameter="{Binding SelectedItem, ElementName=dgUnselected}" 
+                        HorizontalContentAlignment="Center" 
+                        VerticalContentAlignment="Center" FontSize="15"
+                        Height="42"  Width="52" Background="#6B6158" BorderBrush="#FFE297"
+                        Click="btnAllToRight_Click"
+                        Content=">>" Foreground="#FFE297">
+                </Button>
+                <Button   
+                    x:Name="btnSelectedToLeft"
+                        Command="{Binding AddDevice}" 
+                        Margin="0,10,0,0"
+                        CommandParameter="{Binding SelectedItem, ElementName=dgUnselected}" 
+                        HorizontalContentAlignment="Center" FontSize="15"
+                        VerticalContentAlignment="Center" Content="&lt;" Foreground="#6B6158"
+                        Height="42"  Width="52" Background="#FFE297" BorderBrush="#6B6158"
+                    Click="btnSelectedToLeft_Click">
+                </Button>
+                <Button   
+                    x:Name="btnAllToLeft"
+                        Command="{Binding AddDevice}" 
+                        Margin="0,10,0,0"
+                        CommandParameter="{Binding SelectedItem, ElementName=dgUnselected}" 
+                        HorizontalContentAlignment="Center" FontSize="15"
+                        VerticalContentAlignment="Center" Content="&lt;&lt;" Foreground="#FFE297"
+                        Height="42"  Width="52" Background="#6B6158" BorderBrush="#FFE297"
+                    Click="btnAllToLeft_Click">
+                </Button>
+            </StackPanel>
+            <!--Data grid-->
+            <DockPanel Grid.RowSpan="2" >
+                <TextBox IsReadOnly="True" DockPanel.Dock="Top" Text="Quyền chưa chọn" />
+                <DataGrid x:Name="dgUnselected"
+                          Height="275"
+                          HeadersVisibility="None" IsReadOnly="True"
+                          SelectedItem="{Binding Path=AccessPermissionName, Mode=TwoWay}"
+                          SelectionUnit="FullRow"
+                          SelectedCellsChanged="dgUnselected_SelectedCellsChanged"
+                          ScrollViewer.CanContentScroll="True"
+                          >
+                </DataGrid>
+            </DockPanel>
+            <DockPanel Grid.Column="4">
+                <TextBox IsReadOnly="True" DockPanel.Dock="Top" Text="Quyền đã chọn" />
+                <DataGrid x:Name="dgSelected" 
+                          Height="275"
+                          HeadersVisibility="None" IsReadOnly="True"
+                          SelectedItem="{Binding Path=AccessPermissionName, Mode=TwoWay}"
+                          SelectionUnit="FullRow"
+                          SelectedCellsChanged="dgSelected_SelectedCellsChanged"
+                          ScrollViewer.CanContentScroll="True"/>
+            </DockPanel>
+        </Grid>
+        <!--Save, Cancel button-->
+        <StackPanel Height="100" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btSave" Height="40" Width="100"
+                    Content="LƯU"  Background="#66A3FF" Click="btSave_Click"/>
+            <Button x:Name="btExit" Height="40" Width="100"
+                    Content="HỦY" Margin="10,0,0,0" Background="#F27047" Click="btExit_Click"/>
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,93 @@
+﻿<UserControl x:Class="CoffeeShop.IncomeAndPayment.PopupPaymentDetail"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeShop.IncomeAndPayment"
+             xmlns:UserControls="clr-namespace:CoffeeShop.View"
+             mc:Ignorable="d" 
+             Height="Auto" Width="460">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--Title bar here-->
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Margin="0,0,0,0" x:Name="topBar" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <UserControls:TitleBar/>
+            <TextBlock Text="Chi tiết phiếu chi" 
+                       FontFamily="Montserrat"
+                       FontSize="20" 
+                       FontWeight="Bold"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       Foreground="#FFE297"/>
+        </Grid>
+        <!--Payment ID here-->
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <TextBlock>Mã phiếu chi</TextBlock>
+            <TextBox Name="tbPaymentID" Background="#DADADA"
+                     Padding="5" Margin="0,5,0,0" Height="40"
+                     BorderThickness="0" IsReadOnly="True"
+                     FontSize="15" VerticalContentAlignment="Center">
+            </TextBox>
+        </StackPanel>
+        <!--Employee name here-->
+        <StackPanel Grid.Row="4" Grid.Column="1">
+            <TextBlock>Người lập</TextBlock>
+            <TextBox Name="tbEmployeeName" Background="#DADADA"
+                     Padding="5" Margin="0,5,0,0" Height="40"
+                     BorderThickness="0" IsReadOnly="True"
+                     FontSize="15" VerticalContentAlignment="Center">
+            </TextBox>
+        </StackPanel>
+        <!--Date & amount here-->
+        <Grid Grid.Row="6" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Row="0">Ngày lập</TextBlock>
+            <TextBox x:Name="tbTime" Grid.Row="2" Background="#DADADA"
+                     Padding="5" Height="40"
+                     BorderThickness="0" IsReadOnly="True"
+                     FontSize="15" VerticalContentAlignment="Center">
+            </TextBox>
+            <TextBlock Grid.Column="2">Số tiền (VNĐ)</TextBlock>
+            <TextBox Grid.Row="2" Grid.Column="2" Name="tbAmount" Background="#DADADA"
+                     Padding="5"  Height="40"
+                     BorderThickness="0" IsReadOnly="True"
+                     FontSize="15" VerticalContentAlignment="Center">
+            </TextBox>
+        </Grid>
+        <!--Description here-->
+        <StackPanel Grid.Row="8" Grid.Column="1">
+            <TextBlock>Lý do</TextBlock>
+            <TextBox Name="tbDescription" Background="#DADADA"
+                     Padding="5" Margin="0,5,0,0" Height="80"
+                     BorderThickness="0" IsReadOnly="True"
+                     FontSize="15">
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

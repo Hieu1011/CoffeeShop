@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="CoffeeShop.DataSetting.DataSetting"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeShop.DataSetting"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             VerticalAlignment="Stretch"
+             MinWidth="650" Height="Auto">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Header here-->
+        <Grid Background="#6B6158" Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="#FFE297" FontSize="30" FontWeight="Bold">
+                Dữ liệu
+            </Label>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#FFE297"></Grid>
+        </Grid>
+
+        <!--Body here-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <lvc:PieChart x:Name="pieChart" MinHeight="450" LegendLocation="Bottom" StartingRotationAngle="0" >
+                <lvc:PieChart.ChartLegend>
+                    <lvc:DefaultLegend BulletSize="20"></lvc:DefaultLegend>
+                </lvc:PieChart.ChartLegend>
+                <lvc:PieChart.DataTooltip>
+                    <lvc:DefaultTooltip BulletSize="20"></lvc:DefaultTooltip>
+                </lvc:PieChart.DataTooltip>
+            </lvc:PieChart>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Grid.Column="1"  Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="btnResetData" Margin="10">Đặt lại dữ liệu</Button>
+            <Button x:Name="btnImport" Margin="10">Khôi phục dữ liệu</Button>
+            <Button x:Name="btnExport" Margin="10">Sao lưu dữ liệu</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

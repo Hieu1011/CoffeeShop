@@ -1,0 +1,130 @@
+﻿<UserControl x:Class="CoffeeShop.Rule.RuleEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeShop.Rule" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             MinWidth="650" Height="Auto">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Header here-->
+        <Grid Background="#6B6158" Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="#FFE297" FontSize="30" FontWeight="Bold">
+                Thiết lập quy định
+            </Label>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#FFE297"></Grid>
+        </Grid>
+
+        <!--Body here-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock>Số dòng tối đa trong 1 trang danh sách</TextBlock>
+                    <TextBox Name="tbMaxNumRow" Height="40" Padding="5" Margin="0,5,0,0" 
+                             BorderThickness="1" FontSize="15" VerticalContentAlignment="Center"
+                             PreviewKeyDown="tbMaxNumRow_PreviewKeyDown" PreviewTextInput="tbMaxNumRow_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Margin="20,0,0,0" Grid.Row="1" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Name="tbMaxNumRowValidation" FontSize="13" Foreground="Red" Text=""/>
+
+                <StackPanel Grid.Row="2">
+                    <TextBlock>Thời gian được sửa/xóa hóa đơn (ngày)</TextBlock>
+                    <TextBox Name="tbMaxDaysBill" Height="40" Padding="5" Margin="0,5,0,0" 
+                             BorderThickness="1" FontSize="15" VerticalContentAlignment="Center"
+                             PreviewKeyDown="tbMaxDaysBill_PreviewKeyDown" PreviewTextInput="tbMaxDaysBill_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Margin="20,0,0,0" Grid.Row="3" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Name="tbMaxDaysBillValidation" FontSize="13" Foreground="Red" Text=""/>
+
+                <StackPanel Grid.Row="4">
+                    <TextBlock>Thời gian được sửa/xóa phiếu nhập kho (ngày)</TextBlock>
+                    <TextBox Name="tbMaxDaysImport" Height="40" Padding="5" Margin="0,5,0,0" 
+                             BorderThickness="1" FontSize="15" VerticalContentAlignment="Center"
+                             PreviewKeyDown="tbMaxDaysImport_PreviewKeyDown" PreviewTextInput="tbMaxDaysImport_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Margin="20,0,0,0" Grid.Row="5" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Name="tbMaxDaysImportValidation" FontSize="13" Foreground="Red" Text=""/>
+
+                <StackPanel Grid.Row="6">
+                    <TextBlock>Thời gian được sửa/xóa phiếu xuất kho (ngày)</TextBlock>
+                    <TextBox Name="tbMaxDaysExport" Height="40" Padding="5" Margin="0,5,0,0" 
+                             BorderThickness="1" FontSize="15" VerticalContentAlignment="Center"
+                             PreviewKeyDown="tbMaxDaysExport_PreviewKeyDown" PreviewTextInput="tbMaxDaysExport_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Margin="20,0,0,0" Grid.Row="7" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Name="tbMaxDaysExportValidation" FontSize="13" Foreground="Red" Text=""/>
+
+                <StackPanel Grid.Row="8">
+                    <TextBlock>Thời gian được sửa/xóa phiếu chi (ngày)</TextBlock>
+                    <TextBox Name="tbMaxDaysPayment" Height="40" Padding="5" Margin="0,5,0,0" 
+                             BorderThickness="1" FontSize="15" VerticalContentAlignment="Center"
+                             PreviewKeyDown="tbMaxDaysPayment_PreviewKeyDown" PreviewTextInput="tbMaxDaysPayment_PreviewTextInput">
+                    </TextBox>
+                </StackPanel>
+                <TextBlock Margin="20,0,0,0" Grid.Row="9" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right"
+                   Name="tbMaxDaysPaymentValidation" FontSize="13" Foreground="Red" Text=""/>
+
+                <Button Grid.Row="10" Width="100" Margin="0,0,10,0"
+                            Name="btSave"
+                            Background="#66A3FF" FontWeight="Bold"
+                            VerticalAlignment="Top" HorizontalAlignment="Right"
+                            Click="btSave_Click">
+                    LƯU
+                </Button>
+                <Button Grid.Row="10" Grid.Column="1" Width="100" Margin="10,0,0,0"
+                            Background="#F27047" FontWeight="Bold"
+                            Name="btExit" Click="btExit_Click"
+                            VerticalAlignment="Top" HorizontalAlignment="Left">
+                    HỦY
+                </Button>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

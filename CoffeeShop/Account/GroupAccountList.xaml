@@ -1,0 +1,236 @@
+﻿<UserControl x:Class="CoffeeShop.Account.GroupAccountList"
+             FontFamily="Open Sans"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoffeeShop.Inventory"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             MinWidth="650" MaxHeight="600">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="30"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--Header here-->
+        <Grid Background="#6B6158" Grid.Row="0" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Foreground="#FFE297" FontSize="30" FontWeight="Bold" Content="Danh sách nhóm tài khoản"/>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="#FFE297"></Grid>
+        </Grid>
+        
+        <!--Body here-->
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="15"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Button here-->
+            <Button Grid.Row="1" Grid.Column="1"
+                    BorderBrush="#6B6158" BorderThickness="1"
+                    Background="#FFE297" Foreground="#6B6158"
+                    Click="Button_Click">+ THÊM</Button>
+            <!--List here-->
+            <Grid Grid.Row="3" Grid.ColumnSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                <!--List header here-->
+                <!--List body here-->
+                <Border Grid.Row="1" BorderBrush="#6B6158" BorderThickness="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition Height="1*"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="1*"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid x:Name="dataGridGroupAccount" Grid.Column="1" Grid.Row="1" 
+                                  IsReadOnly="True" BorderThickness="1"
+                                  BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
+                                  HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" AutoGenerateColumns="False"
+                                  HeadersVisibility="All">
+                            <DataGrid.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter Margin="13,0,13,0" VerticalAlignment="Center" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.CellStyle>
+
+                            <DataGrid.Resources>
+                                <Style x:Key="DataGrid_Label_Style" 
+                                       TargetType="Label">
+                                    <Setter Property="Foreground" Value="#717171" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Foreground" Value="Black" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+
+                                <Style x:Key="DataGrid_Content_Center"
+                                           TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                    <Setter Property="Foreground" Value="Black" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="{x:Null}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+
+                            <DataGrid.RowHeaderTemplate>
+                                <DataTemplate>
+                                    <Label HorizontalContentAlignment="Center" Width="50"
+                                           Content="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow},
+                                                             Path=Header}"/>
+                                </DataTemplate>
+                            </DataGrid.RowHeaderTemplate>
+                            
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Tên nhóm tài khoản" Binding="{Binding Path='name'}">
+                                </DataGridTextColumn>
+
+                                <DataGridCheckBoxColumn 
+                                    Header="Thu ngân"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=cashier}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Quản lý tài khoản"
+                                    IsThreeState="True"
+                                    Binding="{Binding Path=account}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn
+                                    Header="Quản lý nhóm tài khoản"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=accountType}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Quản lý kho"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=inventory}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Quản lý chi phí"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=cost}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Quản lý menu"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=menu}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Quản lý ưu đãi"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=discount}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Báo cáo"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=report}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn 
+                                    Header="Thiết lập quy định"
+                                    IsThreeState="True" 
+                                    Binding="{Binding Path=rule}">
+                                </DataGridCheckBoxColumn>
+                                <DataGridTemplateColumn Header="">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Margin="10,0,0,0" Name="btnEdit" Tag="{Binding Path='name'}" BorderBrush="#3D76B5" Background="#3D76B5" Click="btnEdit_Click">
+                                                    <materialDesign:PackIcon Kind="GreasePencil" Foreground="White" Height="20" Width="20"  />
+                                                </Button>
+                                                <Button Margin="10,0,0,0" Name="btnDelete" Tag="{Binding Path='name'}" BorderBrush="#E55252" Background="#E55252" Click="btnDelete_Click">
+                                                    <materialDesign:PackIcon Kind="Delete" Height="20" Width="20" />
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="2">
+                            <Button x:Name="btnPagePre" Width="40" Height="Auto" 
+                                    Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center" Click="btnPagePre_Click">
+                                <materialDesign:PackIcon Kind="ChevronLeft" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="20" Foreground="Black" />
+                            </Button>
+                            <TextBox Name="tbNumPage" Width="35" Height="30"
+                                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                                     Text="1" FontWeight="SemiBold" FontSize="14" 
+                                     Background="Transparent" BorderBrush="Black" BorderThickness="0,0,0,1"
+                                     KeyDown="tbNumPage_KeyDown" PreviewTextInput="tbNumPage_PreviewTextInput"
+                                     PreviewKeyDown="tbNumPage_PreviewKeyDown"/>
+                            <Label VerticalContentAlignment="Center" 
+                                   Content="/" FontWeight="SemiBold" FontSize="14"/>
+                            <Label Name="lblMaxPage" Width="35" 
+                                   Content="10" FontWeight="SemiBold" FontSize="14"
+                                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                            <Button x:Name="btnPageNext" Width="40" Height="Auto" 
+                                    Background="Transparent" BorderBrush="Transparent" BorderThickness="0"
+                                    VerticalAlignment="Center" Click="btnPageNext_Click">
+                                <materialDesign:PackIcon Kind="ChevronRight" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="20" Foreground="Black" 
+                                                        />
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
